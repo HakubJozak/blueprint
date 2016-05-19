@@ -1,0 +1,11 @@
+.panel class=(opts[:class] || 'panel-default')
+  - if title.present?
+    .panel-heading
+      h4.panel-title = title
+
+  - if defined?(body)
+    .panel-body
+      = body
+
+  - if defined?(table)
+    = table

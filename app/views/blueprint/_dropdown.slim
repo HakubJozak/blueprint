@@ -1,0 +1,11 @@
+/! Split button
+.btn-group
+  = link_to main.title, main.url, main.opts.merge(class: 'btn btn-default btn-sm')
+  button.btn.btn-default.btn-sm.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+    span.caret
+    span.sr-only Toggle Dropdown
+  ul.dropdown-menu
+    - links.each do |link|
+      li
+        = link_to link.title, link.url, link.opts
+    / li.divider role="separator"
