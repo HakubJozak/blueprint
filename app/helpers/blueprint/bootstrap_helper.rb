@@ -1,4 +1,4 @@
-module BootstrapHelper
+module Blueprint::BootstrapHelper
   def li_link_to(title, path, opts = {})
     klass = 'active' if request.path == path
     content_tag :li, class: klass do
@@ -25,7 +25,7 @@ module BootstrapHelper
     end
 
     vars[:opts] = opts
-    render partial: 'admin/partials/panel', locals: vars
+    render partial: 'blueprint/panel', locals: vars
   end
 
   def dropdown(links)
@@ -54,6 +54,5 @@ module BootstrapHelper
     text = capture(&block)
     render 'blueprint/fieldset', legend: legend, body: text
   end
-
 
 end

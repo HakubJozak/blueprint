@@ -1,0 +1,47 @@
+class <%= controller_name %> < Admin::BaseController
+
+  before_action :<%= find_method %>, except: [ :index, :create, :new ]
+
+  <%- if blueprint.has_zone? -%>
+  before_action :find_filter_zone, only: [ :index ]
+  <%- end -%>
+  
+  def index
+    @<%= plural_name %> = <%= model_class %>.<%= index_scope %>
+    respond_with @<%= plural_name %>
+  end
+
+  def new
+    <%= singular_instance %> = <%= model_class %>.new
+  end
+
+  def create
+    <%= singular_instance %> = <%= model_class %>.new(<%= params_method %>)
+    respond_with <%= singular_instance %>
+  end
+
+  def update
+    <%= singular_instance %>.update(<%= params_method %>)
+    respond_with <%= singular_instance %>
+  end
+
+  def destroy
+    <%= singular_instance %>.update(<%= params_method %>)
+    respond_with <%= singular_instance %>
+  end
+
+  private
+
+  def location
+    <%= index_path %>
+  end
+
+  def <%= find_method %>
+    <%= singular_instance %> = <%= model_class %>.find(params[:id])
+  end
+
+  def <%= params_method %>
+    params.require(:<%= singular_name %>).permit(<%= fields_whitelist %>)
+  end
+
+end
