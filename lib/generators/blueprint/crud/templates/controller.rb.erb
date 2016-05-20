@@ -5,7 +5,7 @@ class <%= controller_name %> < Admin::BaseController
   <%- if blueprint.has_zone? -%>
   before_action :find_filter_zone, only: [ :index ]
   <%- end -%>
-  
+
   def index
     @<%= plural_name %> = <%= model_class %>.<%= index_scope %>
     respond_with @<%= plural_name %>
@@ -16,7 +16,7 @@ class <%= controller_name %> < Admin::BaseController
   end
 
   def create
-    <%= singular_instance %> = <%= model_class %>.new(<%= params_method %>)
+    <%= singular_instance %> = <%= model_class %>.create(<%= params_method %>)
     respond_with <%= singular_instance %>
   end
 
@@ -31,10 +31,6 @@ class <%= controller_name %> < Admin::BaseController
   end
 
   private
-
-  def location
-    <%= index_path %>
-  end
 
   def <%= find_method %>
     <%= singular_instance %> = <%= model_class %>.find(params[:id])

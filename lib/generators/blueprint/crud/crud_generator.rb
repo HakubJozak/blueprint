@@ -1,4 +1,4 @@
-class CrudGenerator < Rails::Generators::NamedBase
+class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 
   def create_files
