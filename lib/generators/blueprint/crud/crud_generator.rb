@@ -50,6 +50,18 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
     "#{table_name}_path"
   end
 
+  def new_path
+    "new_#{table_name.singularize}_path"    
+  end
+
+  def parent_controller
+    if class_name =~ /(^.*::)/
+      "#{$1}BaseController"
+    else
+      'ApplicationController'
+    end
+  end
+
   def singular_instance
     "@#{singular_name}"
   end

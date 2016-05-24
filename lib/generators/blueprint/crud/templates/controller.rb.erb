@@ -1,5 +1,8 @@
-class <%= controller_name %> < ApplicationController
+class <%= controller_name %> < <%= parent_controller %>
+  include Blueprint::Pagination
+  include Blueprint::Sorting
 
+  respond_to :html
   before_action :<%= find_method %>, except: [ :index, :create, :new ]
 
   <%- if blueprint.has_zone? -%>
