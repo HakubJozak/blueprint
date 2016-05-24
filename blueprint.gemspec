@@ -11,12 +11,15 @@ Gem::Specification.new do |s|
   s.email       = ["jakub.hozak@gmail.com"]
   s.homepage    = "http://github.com/hakubjozak/blueprint"
   s.summary     = "Opiniated admin scaffolding on top of Rails"
-  s.description = "Opiniated admin scaffolding on top of Rails"
+  s.description =
+    "Opiniated admin scaffolding on top of Rails using Responders, Slim and Bootstrap."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails" #, ">= 5.0.0.rc1", "< 5.1"
+  s.add_dependency "slim-rails"
+  s.add_dependency "responders"
 
   s.add_development_dependency "sqlite3"
 end

@@ -12,7 +12,7 @@ module Blueprint
         @fields.map(&:to_whitelist).join(",")
       end
 
-      %i( boolean decimal text string datetime date integer ).each do |type|
+      %i( boolean decimal text string datetime date integer json ).each do |type|
         define_method type do |name,opts = {}|
           @fields << ::Blueprint::Dsl::PlainAttribute.new(name)
         end

@@ -1,6 +1,6 @@
 module Blueprint
   module Dsl
-    class BelongsToAttribute < Blueprint::PlainAttribute
+    class BelongsToAttribute < PlainAttribute
       def to_whitelist
         ":#{name}_id"
       end

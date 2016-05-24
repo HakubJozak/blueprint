@@ -1,8 +1,13 @@
 # Blueprint
-Short description and motivation.
+
+Blueprint is a strongly opiniated admin UI scaffolding sitting on top of
+Rails generators. The views are written in Slim and Bootstrap.
+Controllers use `responders` gem.
+
 
 ## Usage
-How to use my plugin.
+
+For basic use just 
 
 ## Installation
 Add this line to your application's Gemfile:

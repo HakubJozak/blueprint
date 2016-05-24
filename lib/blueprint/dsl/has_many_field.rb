@@ -1,6 +1,6 @@
 module Blueprint
   module Dsl
-    class HasManyField < Blueprint::PlainAttribute
+    class HasManyField < PlainAttribute
       attr_reader :model
 
       def initialize(name,model,opts = {})

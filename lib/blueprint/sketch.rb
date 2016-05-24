@@ -4,10 +4,10 @@ require_relative 'dsl/has_many_field'
 require_relative 'dsl/model'
 
 
-module Blueprint::Sketch
+class Blueprint::Sketch
   def initialize(file = Rails.root.join('db/blueprint.rb').to_s)
-    @dsl = DSL.new
-    @dsl.instance_eval(File.read(filename),filename)
+    @dsl = Dsl.new
+    @dsl.instance_eval(File.read(file),file)
   end
 
   def models
@@ -22,7 +22,7 @@ module Blueprint::Sketch
     end
 
     def model(name,&block)
-      @models[name] = Model.new(name)
+      @models[name] = ::Blueprint::Dsl::Model.new(name)
       @models[name].instance_eval(&block) if block
     end
   end

@@ -9,5 +9,5 @@ class Blueprint::AllGenerator < Rails::Generators::Base
       m.run_crud_generator!(self)
     end
   end
-  
+
 end

@@ -1,6 +1,6 @@
 module Blueprint
   module Dsl
-    class Blueprint::PlainAttribute  < Struct.new(:name)
+    class PlainAttribute < Struct.new(:name)
       def to_str
         name.to_s
       end

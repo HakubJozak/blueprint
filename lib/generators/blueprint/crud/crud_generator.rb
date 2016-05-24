@@ -2,7 +2,8 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 
   def create_files
-    @blueprint = Blueprint.read[singular_name.to_sym] || Blueprint::Model.new(name.to_sym)
+    models = Blueprint::Sketch.new.models
+    @blueprint = models[singular_name.to_sym] || Blueprint::Model.new(name.to_sym)
 
     template "controller.rb.erb",
              File.join('app/controllers', controller_file_name)
@@ -38,7 +39,7 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   end
 
   def model_class
-    class_name.gsub(/Admin/,'V4')
+    class_name.demodulize
   end
 
   def resource_path_for(variable)
