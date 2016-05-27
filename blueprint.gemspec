@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/hakubjozak/blueprint"
   s.summary     = "Opiniated admin scaffolding on top of Rails"
   s.description =
-    "Opiniated admin scaffolding on top of Rails using Responders, Slim and Bootstrap."
+    "Opiniated admin scaffolding on top of Rails using Responders, SimpleForm, Slim and Bootstrap."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

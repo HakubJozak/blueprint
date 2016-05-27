@@ -18,10 +18,12 @@ module Blueprint::BootstrapHelper
   def panel(title = nil,opts = {},&block)
     vars = { title: title }
 
-    if opts.delete(:table)
-      vars[:table] = capture(&block)
-    else
-      vars[:body] = capture(&block)
+    if block_given?
+      if opts.delete(:table)
+        vars[:table] = capture(&block)
+      else
+        vars[:body] = capture(&block)
+      end
     end
 
     vars[:opts] = opts

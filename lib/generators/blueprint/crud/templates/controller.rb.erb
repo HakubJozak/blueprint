@@ -29,7 +29,7 @@ class <%= controller_name %> < <%= parent_controller %>
   end
 
   def destroy
-    <%= singular_instance %>.update(<%= params_method %>)
+    <%= singular_instance %>.destroy
     respond_with <%= singular_instance %>
   end
 
