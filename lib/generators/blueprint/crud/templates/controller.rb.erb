@@ -11,7 +11,7 @@ class <%= controller_name %> < <%= parent_controller %>
 
   def index
     @<%= plural_name %> = <%= model_class %>.<%= index_scope %>
-    respond_with @<%= plural_name %>
+    <%= respond_with(plural_instance) %>
   end
 
   def new
@@ -20,17 +20,17 @@ class <%= controller_name %> < <%= parent_controller %>
 
   def create
     <%= singular_instance %> = <%= model_class %>.create(<%= params_method %>)
-    respond_with <%= singular_instance %>
+    <%= respond_with(singular_instance) %>, location: <%= index_path %>
   end
 
   def update
     <%= singular_instance %>.update(<%= params_method %>)
-    respond_with <%= singular_instance %>
+    <%= respond_with(singular_instance) %>, location: <%= index_path %>
   end
 
   def destroy
     <%= singular_instance %>.destroy
-    respond_with <%= singular_instance %>
+    <%= respond_with(singular_instance) %>, location: <%= index_path %>
   end
 
   private

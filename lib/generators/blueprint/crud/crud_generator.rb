@@ -51,11 +51,11 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   end
 
   def new_path
-    "new_#{table_name.singularize}_path"    
+    "new_#{table_name.singularize}_path"
   end
 
   def show_path(r = singular_instance)
-    "#{table_name.singularize}_path(#{r})"    
+    "#{table_name.singularize}_path(#{r})"
   end
 
   def parent_controller
@@ -68,6 +68,19 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
 
   def singular_instance
     "@#{singular_name}"
+  end
+
+  def plural_instance
+    "@#{plural_name}"
+  end
+
+  def respond_with(var)
+    if name =~ %r{(\w+)/(\w+)}
+      # namespaced
+      "respond_with :#{$1}, #{var}"
+    else
+      "respond_with #{var}"
+    end
   end
 
   def find_method
