@@ -31,7 +31,7 @@ module Blueprint::FilteringHelper
 
     opts.reverse_merge!(class: 'form-control',
                         include_blank: true)
-    
+
     select_tag param_name,
                options_for_select(array, value),
                opts
@@ -43,11 +43,11 @@ module Blueprint::FilteringHelper
 
     opts.reverse_merge!(class: 'form-control',
                         include_blank: true)
-    
+
     select_tag param_name,
                options_for_select(records, value),
                opts
   end
-  
+
 
 end
