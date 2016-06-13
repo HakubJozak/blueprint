@@ -14,7 +14,7 @@ module Blueprint
 
       %i( boolean decimal text string datetime date integer json ).each do |type|
         define_method type do |name,opts = {}|
-          @fields << ::Blueprint::Dsl::PlainAttribute.new(name)
+          @fields << ::Blueprint::Dsl::PlainAttribute.new(name,type)
         end
       end
 
@@ -30,7 +30,7 @@ module Blueprint
         @fields << ::Blueprint::Dsl::BelongsToAttribute.new(name)
       end
 
-      # TODO: move to Blueprint::AllGenerator
+      # TODO: move to generator
       def run_crud_generator!(generator)
         with_parent_generator(generator) do
           opts = { behavior: @generator.behavior }

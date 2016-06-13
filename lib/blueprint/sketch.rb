@@ -14,6 +14,10 @@ class Blueprint::Sketch
     @dsl.models
   end
 
+  def find!(name)
+    @dsl.models.fetch name.to_sym
+  end
+
   class Dsl
     attr_reader :models
 

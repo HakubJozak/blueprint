@@ -8,6 +8,10 @@ module Blueprint
         @model = model
       end
 
+      def to_arg
+        nil
+      end
+
       def to_whitelist
         "#{name}_attributes: [ #{@model.fields_whitelist} ]"
       end

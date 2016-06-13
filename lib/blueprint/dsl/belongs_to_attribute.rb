@@ -1,6 +1,10 @@
 module Blueprint
   module Dsl
     class BelongsToAttribute < PlainAttribute
+      def to_arg
+        [ name, 'belongs_to' ].join ':'
+      end
+
       def to_whitelist
         ":#{name}_id"
       end

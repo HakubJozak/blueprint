@@ -1,0 +1,5 @@
+Description:
+    Calls the Rails model generator using the definitions in `db/blueprint.rb`.
+
+Example:
+    rails generate blueprint:model Thing
