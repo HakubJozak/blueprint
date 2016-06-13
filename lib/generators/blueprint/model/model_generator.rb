@@ -1,13 +1,27 @@
 class Blueprint::ModelGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 
-  def call_rails_model
-    model = sketch.find!(name)
-    fields = model.fields.map(&:to_arg)
-    call! 'model', [ name, fields.compact ]
+  def delegate_to_rails
+    if name == 'all'
+      all_models
+    else
+      one_model(name)
+    end
   end
 
   private
+
+  def all_models
+    sketch.models.each_value do |m|
+      one_model(m.name.to_s)
+    end
+  end
+  
+  def one_model(name)
+    model = sketch.find!(name.to_sym)
+    fields = model.fields.map(&:to_arg)
+    call! 'model', [ model.name.to_s, fields.compact ]    
+  end
 
   def sketch
     Blueprint::Sketch.new    

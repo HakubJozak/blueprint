@@ -1,7 +1,7 @@
 module Blueprint
   module Dsl
     class Model
-      attr_reader :fields
+      attr_reader :fields, :name
 
       def initialize(name)
         @name = name
