@@ -5,10 +5,6 @@ class <%= controller_name %> < <%= parent_controller %>
   respond_to :html
   before_action :<%= find_method %>, except: [ :index, :create, :new ]
 
-  <%- if blueprint.has_zone? -%>
-  before_action :find_filter_zone, only: [ :index ]
-  <%- end -%>
-
   def index
     @<%= plural_name %> = <%= model_class %>.<%= index_scope %>
     <%= respond_with(plural_instance) %>

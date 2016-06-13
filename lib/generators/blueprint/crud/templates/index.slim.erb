@@ -1,9 +1,5 @@
 h2.sub-header = <%= model_class %>.model_name.human(count: 2)
 
-<%- if blueprint.has_zone? -%>
-= render 'admin/partials/zone_switcher'
-<%- end -%>
-
 .table-responsive
   table.table.table-striped
     thead

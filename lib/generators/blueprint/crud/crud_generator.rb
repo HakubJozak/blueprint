@@ -31,11 +31,7 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   delegate :fields, :fields_whitelist, to: :blueprint
 
   def index_scope
-    if blueprint.has_zone?
-      'order(:created_at).page(current_page).by_zone(@zone)'
-    else
-      'order(:created_at).page(current_page)'
-    end
+    'order(:created_at).page(current_page)'
   end
 
   def model_class
