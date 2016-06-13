@@ -1,0 +1,22 @@
+Description:
+    Clones Blueprint helpers, concerns, generators and their
+    templates into the current project so that you can override
+    them easily
+
+Example:
+    rails generate clone
+
+    This will create:
+        lib/generators/blueprint/crud_generator.rb
+        lib/generators/blueprint/templates/*        
+
+        app/controllers/concern/blueprint/filtering.rb
+        app/controllers/concern/blueprint/sorting.rb
+        app/controllers/concern/blueprint/pagination.rb
+        ...
+
+        app/views/blueprint/_dropdown.slim
+        app/views/blueprint/_fieldset.slim
+        ...
+
+
