@@ -18,13 +18,6 @@ module Blueprint
         end
       end
 
-      # Vyvolejto specific
-      # -----------------------
-      def has_zone?
-        @fields.any? { |f| f.name == :zone }
-      end
-      # -----------------------
-
       # HACK - rewrite
       def has_many(name,opts = {},&block)
         model = ::Blueprint::Dsl::Model.new(name.to_s.singularize)
@@ -37,6 +30,7 @@ module Blueprint
         @fields << ::Blueprint::Dsl::BelongsToAttribute.new(name)
       end
 
+      # TODO: move to Blueprint::AllGenerator
       def run_crud_generator!(generator)
         with_parent_generator(generator) do
           opts = { behavior: @generator.behavior }
