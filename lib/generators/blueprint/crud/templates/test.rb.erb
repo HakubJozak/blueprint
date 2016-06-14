@@ -1,0 +1,29 @@
+require 'test_helper'
+
+<% module_namespacing do -%>
+class <%= class_name %>ControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    sign_in create(:admin_user)
+  end
+
+  test '#index' do
+    3.times { create :<%= singular_name %> }
+    get <%= index_path %>
+    assert_response :success
+  end
+
+  test '#new' do
+    get <%= index_path %>
+    assert_response :success
+  end
+
+  test '#edit' do
+    <%= singular_name %> = create :<%= singular_name %>  
+    get <%= edit_path(singular_name) %>
+    assert_response :success
+  end
+
+
+end
+<% end -%>

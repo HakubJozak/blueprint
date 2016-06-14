@@ -1,34 +1,46 @@
 class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 
-  def create_files
-    models = Blueprint::Sketch.new.models
-    @blueprint = models[singular_name.to_sym] || Blueprint::Model.new(name.to_sym)
-
+  def create_controller_class
     template "controller.rb.erb",
              File.join('app/controllers', controller_file_name)
 
+  end
+
+  def create_controller_test
+    template "test.rb.erb",
+             File.join('test/controllers', test_file_name)
+  end
+
+  def create_views
     %w( edit index new _form ).each do |view|
       template "#{view}.slim.erb",
                File.join("app/views/#{name}s", "#{view}.slim")
     end
 
     # HACK has many - rewrite
-    @blueprint.fields.each do |f|
-      if f.try(:model)
-        old = @blueprint
-        @blueprint = f.model
-        template "_form.slim.erb",
-                 File.join("app/views/#{name}s", "_#{f.name}_form.slim")
-        @blueprint = old
-      end
-    end
+    # blueprint.fields.each do |f|
+    #   if f.try(:model)
+    #     old = @blueprint
+    #     @blueprint = f.model
+    #     template "_form.slim.erb",
+    #              File.join("app/views/#{name}s", "_#{f.name}_form.slim")
+    #     @blueprint = old
+    #   end
+    # end
   end
 
   protected
 
-  attr_reader :blueprint
+  def blueprint
+    @blueprint ||= sketch.find!(singular_name)
+  end
+
   delegate :fields, :fields_whitelist, to: :blueprint
+
+  def sketch
+    @sketch ||= Blueprint::Sketch.new
+  end
 
   def index_scope
     'order(:created_at).page(current_page)'
@@ -48,6 +60,10 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
 
   def new_path
     "new_#{table_name.singularize}_path"
+  end
+
+  def edit_path(r = singular_instance)
+    "edit_#{table_name.singularize}_path(#{r})"
   end
 
   def show_path(r = singular_instance)
@@ -94,5 +110,13 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   def controller_file_name
     "#{name}s_controller.rb"
   end
+
+  # Test helpers
+
+  def test_file_name
+    "#{name}s_controller_test.rb"
+  end
+
+
 
 end
