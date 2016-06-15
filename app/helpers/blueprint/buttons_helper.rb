@@ -10,7 +10,7 @@ module Blueprint::ButtonsHelper
     question = t('really_delete',title: name)
     ico = icon 'trash'
 
-    opts.reverse_merge!('data-confirm': question,
+    opts.reverse_merge!('data-confirm' => question,
                         method: :delete,
                         class: 'btn btn-default pull-right')
 
