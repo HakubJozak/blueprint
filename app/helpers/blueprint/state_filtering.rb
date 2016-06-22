@@ -16,7 +16,7 @@ module Blueprint::StateFiltering
     select_tag :with_state,
                state_select_options(model, opts),
                class: 'form-control',
-               include_blank: t("states.#{model.name}.all")
+               include_blank: t("states.#{model.name.underscore}.all")
   end
 
 
