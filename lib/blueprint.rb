@@ -1,14 +1,12 @@
-require "blueprint/engine"
-require "blueprint/sketch"
-require "blueprint/filterable"
-require "blueprint/sortable"
-require "blueprint/helpers"
-
-# helpers = "#{File.dirname(__FILE__)}/blueprint/helpers/*.rb"
-# Dir[helpers].each { |h| require_relative h }
-
 module Blueprint
-  extend ActiveSupport::Autoload
-
-  autoload :Helpers
 end
+
+require_relative "blueprint/engine"
+require_relative "blueprint/sketch"
+require_relative "blueprint/filterable"
+require_relative "blueprint/sortable"
+require_relative "blueprint/helpers"
+
+helpers = "#{File.dirname(__FILE__)}/blueprint/helpers/*.rb"
+Dir[helpers].each { |h| require_relative h }
+
