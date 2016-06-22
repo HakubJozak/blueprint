@@ -15,14 +15,14 @@ h2.sub-header = <%= model_class %>.model_name.human(count: 2)
         tr
           <%- fields.first(3).each_with_index do |attr,i| -%>
             <%- if i == 0 -%>
-          td = link_to <%= singular_name %>.<%= attr %>, <%= edit_path %>
+          td
+            = link_to <%= singular_name %>.<%= attr %>, <%= edit_path(singular_name) %>
             <%- else -%>
           td
             = <%= singular_name %>.<%= attr %>
             <%- end -%>
-          td
-            = delete_button <%= singular_name %>, <%= show_path %>
-
           <%- end -%>
+          td
+            = delete_button <%= singular_name %>, <%= show_path(singular_name) %>
 
 = paginate @<%= plural_name %>

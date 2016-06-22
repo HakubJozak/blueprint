@@ -16,23 +16,27 @@ class <%= controller_name %> < <%= parent_controller %>
 
   def create
     <%= singular_instance %> = <%= model_class %>.create(<%= params_method %>)
-    <%= respond_with(singular_instance) %>, location: <%= index_path %>
+    <%= respond_with(singular_instance) %>, location: index_path
   end
 
   def update
     <%= singular_instance %>.update(<%= params_method %>)
-    <%= respond_with(singular_instance) %>, location: <%= index_path %>
+    <%= respond_with(singular_instance) %>, location: index_path
   end
 
   def destroy
     <%= singular_instance %>.destroy
-    <%= respond_with(singular_instance) %>, location: <%= index_path %>
+    <%= respond_with(singular_instance) %>, location: index_path
   end
 
   private
 
   def <%= find_method %>
     <%= singular_instance %> = <%= model_class %>.find(params[:id])
+  end
+
+  def index_path
+    <%= index_path %>
   end
 
   def <%= params_method %>

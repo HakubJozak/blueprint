@@ -10,12 +10,13 @@ module Blueprint::Sortable
 
       if column
         method = "order_by_#{column}"
-        direction = desc.present? ? :desc : :asc
+        direction = (desc == '1') ? :desc : :asc
 
         if respond_to?(method)
           send(method,direction)
         else
-          order(column =>  direction)
+          where(nil)
+          # order(column =>  direction)
         end
       else
         where(nil)

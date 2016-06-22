@@ -15,7 +15,7 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   def create_views
     %w( edit index new _form ).each do |view|
       template "#{view}.slim.erb",
-               File.join("app/views/#{name}s", "#{view}.slim")
+               File.join("app/views/#{name.pluralize}", "#{view}.slim")
     end
 
     # HACK has many - rewrite
@@ -104,17 +104,17 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
   end
 
   def controller_name
-    "#{class_name}sController"
+    "#{class_name.pluralize}Controller"
   end
 
   def controller_file_name
-    "#{name}s_controller.rb"
+    "#{name.pluralize}_controller.rb"
   end
 
   # Test helpers
 
   def test_file_name
-    "#{name}s_controller_test.rb"
+    "#{name.pluralize}_controller_test.rb"
   end
 
 
