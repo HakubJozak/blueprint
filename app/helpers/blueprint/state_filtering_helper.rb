@@ -1,4 +1,4 @@
-module Blueprint::StateFiltering
+module Blueprint::StateFilteringHelper
   def state_select_options(model, opts = {})
     opts = model.group(:state).count.map { |state,_|
       if to_exclude = opts[:exclude]

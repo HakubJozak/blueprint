@@ -1,5 +1,4 @@
 module Blueprint::FilteringHelper
-  include StateFiltering
 
   def filter_form(url = {}, opts = {}, &block)
     opts.reverse_merge!(id: 'filter-form',class: 'form form-horizontal', method: :get)

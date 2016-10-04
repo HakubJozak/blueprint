@@ -9,4 +9,3 @@ require_relative "blueprint/helpers"
 
 helpers = "#{File.dirname(__FILE__)}/blueprint/helpers/*.rb"
 Dir[helpers].each { |h| require_relative h }
-

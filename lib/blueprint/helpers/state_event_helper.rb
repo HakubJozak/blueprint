@@ -2,7 +2,7 @@ module Blueprint::Helpers::StateEventHelper
 
   def state_events_dropdown( record, route)
     actions = record.state_events
-    
+
     # use CanCan if possible
     if respond_to? :can?
       actions.select! { |a| can?(a,record) }
@@ -28,7 +28,7 @@ module Blueprint::Helpers::StateEventHelper
   end
 
   private
-  
+
   # HACK - move it elsewhere and make it smarter?
   def translate_or_nil(key,opts)
     missing = '--MISSING-KEY--'
@@ -40,9 +40,5 @@ module Blueprint::Helpers::StateEventHelper
       v
     end
   end
-  
-
-
-
 
 end
