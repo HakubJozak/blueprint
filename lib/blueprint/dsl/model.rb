@@ -38,7 +38,7 @@ module Blueprint
           force_flag = opts['force'] ? '--force' : nil
 
           say! @name.capitalize
-          ::Rails::Generators.invoke 'crud', [ "admin/#{@name.to_s}", force_flag ].flatten, opts
+          ::Rails::Generators.invoke 'blueprint:crud', [ "admin/#{@name.to_s}", force_flag ].flatten, opts
         end
       end
 
