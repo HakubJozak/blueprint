@@ -6,91 +6,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href=dashboard_path Squared
+      a.navbar-brand href=admin_root_path 
+        ' Admin
 
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav.navbar-left
         li
-          = link_to admin_orders_path do
-            = t('.orders')
-            - if (broken = Order.problematic_count) > 0
-              '
-              .badge.broken-records = broken
-
-        = li_link_to t('.users'), admin_users_path
-
-
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.marketing')
-            span.caret
-          ul.dropdown-menu
-            = li_link_to t('.visits'), admin_visits_path
-            = li_link_to t('.coupons'), admin_coupons_path
-            = li_link_to t('.affiliate_payouts'), admin_affiliate_payouts_path
-            = li_link_to t('.welcome_pages'), admin_welcome_pages_path
-
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.goods')
-            span.caret
-          ul.dropdown-menu
-            = li_link_to t('.products'), admin_products_path
-            = li_link_to t('.categories'), admin_product_categories_path
-            li
-              = link_to admin_warehouse_items_path do
-                = t('.warehouse_items')
-                - if (broken = WarehouseItem.running_out.count) > 0
-                  '
-                  .badge.broken-records = broken
-
-        = li_link_to t('.blog_articles'), admin_blog_articles_path
-
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.reports')
-            span.caret
-          ul.dropdown-menu
-            = li_link_to 'Prodej', admin_reports_path
-            = li_link_to t('.costs'), admin_costs_path
-
-
-        li.divider role="separator"
-
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.more')
-            span.caret
-          ul.dropdown-menu
-            = li_link_to t('.admin_users'), admin_admin_users_path
-            = li_link_to t('.shippings'), admin_shippings_path
-            = li_link_to t('.library'), admin_item_images_path
-            = li_link_to t('.menus'), admin_menus_path
-
-            li.divider role="separator"
-            li.dropdown-header = t '.zones'
-            - Zone.all.each do |zone|
-              = li_link_to zone.region_name, edit_admin_zone_path(zone)
-            li.divider role="separator"
-            li.dropdown-header = t '.beware'
-            = li_link_to 'Sidekiq', '/sidekiq', target: 'sidekiq'
-
-
-      ul.nav.navbar-nav.navbar-right
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.suppliers')
-            span.caret
-          ul.dropdown-menu
-            - Supplier.all.each do |supplier|
-              = li_link_to supplier.to_label, making_supplier_lab_path(supplier.code), target: '_blank'
-
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = t('.webs')
-            span.caret
-          ul.dropdown-menu
-            - Zone.all.each do |zone|
-              = li_link_to zone.region_name, root_url(host: zone.host), target: '_blank'
-
-        = render 'admin/partials/auth_links'
+          Hello World!

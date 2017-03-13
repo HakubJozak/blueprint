@@ -32,11 +32,12 @@ class Blueprint::CrudGenerator < Rails::Generators::NamedBase
 
   def routes
     routes = File.new('config/routes.rb').read
-    plural = name.pluralize
+    # plural without module
+    plural = model_class.to_s.underscore.pluralize
 
     unless routes =~ /resources\s+:#{plural}/
       inject_into_file 'config/routes.rb',
-                       "  resources :#{plural}",
+                       "    resources :#{plural}\n",
                        after: /namespace\s+:admin\s+do\n/
       
     end

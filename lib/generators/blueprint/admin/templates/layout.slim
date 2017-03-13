@@ -8,7 +8,7 @@ html lang="en"
     = csrf_meta_tags
     = action_cable_meta_tag
 
-    title = admin_title
+    title = "#{Rails.application.class.parent_name} Admin"
     link crossorigin="anonymous"
 
     = stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload'
@@ -16,7 +16,7 @@ html lang="en"
 
   body
     = render 'admin/topbar'
-    = render_topbar
 
     .container-fluid#main-content
       = render 'admin/flash'
+      = yield

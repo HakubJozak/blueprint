@@ -8,5 +8,5 @@ module Blueprint::IconHelper
   def icon_with_tooltip(name, title, tooltip)
     %(<i class="fa fa-#{name} popover-me" title="#{title}" data-content="#{tooltip}"></i>).html_safe
   end
-  
+
 end
