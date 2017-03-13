@@ -1,0 +1,22 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    meta content="" name="description"
+    meta content="" name="author"
+    = csrf_meta_tags
+    = action_cable_meta_tag
+
+    title = admin_title
+    link crossorigin="anonymous"
+
+    = stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+  body
+    = render 'admin/topbar'
+    = render_topbar
+
+    .container-fluid#main-content
+      = render 'admin/flash'
